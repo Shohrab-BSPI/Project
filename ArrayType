@@ -1,0 +1,60 @@
+import java.awt.Label;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+public class ArrayIntegerDemo extends JFrame {
+
+    public ArrayIntegerDemo() {
+
+        // Asks user to enter the size of the array.
+        int arrayLength = Integer.parseInt(JOptionPane.showInputDialog("Please enter a value for index"));
+
+        ArrayList<Integer> al = new ArrayList<Integer>(); // ArrayList to hold all integer array value.
+
+        for (int i = 0; i < arrayLength; i++) {
+            al.add(Integer.parseInt(JOptionPane.showInputDialog("Please enter a value for index " + i)));
+        }
+
+        ArrayList<Integer> reverseArray = new ArrayList<Integer>(); // Arraylist to hold the reverse array of integers
+        // of al arraylist
+        ArrayList<Integer> al1 = new ArrayList<Integer>();
+
+        for (int i = al.size() - 1; i >= 0; i--) {
+            reverseArray.add(al.get(i)); // Store the value in reverseArray in reverse form
+            al1.add(al.get(i)); // hold the reverse array temporarily.
+
+        }
+
+        Collections.sort(reverseArray);
+        Collections.reverse(reverseArray); // reverse the array after sorted
+
+        int total = 0;
+        for (int i = 0; i < al.size(); i++) {
+            total = total + al.get(i);
+        }
+
+        double size = arrayLength;
+        double average = total / size;
+
+        // Print the final JPanel
+        JOptionPane.showMessageDialog(null,
+                "Array elements enterd by you: " + al + "\nArray in reverse order: " + al1 + "\nMinimum number: "
+                        + reverseArray.get(arrayLength - 1) + " \nMaximum Number: " + reverseArray.get(0) + " \nSum: "
+                        + total + " \nAverage: " + average);
+
+    }
+
+    public static void main(String[] args) {
+        new ArrayIntegerDemo();
+    }
+
+}
